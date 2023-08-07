@@ -2,6 +2,11 @@
 #include <list>
 #include <iterator>
 
+// 핵심 : 삽입반복자의 개념
+// => s.begin() 으로 꺼내는 것이 아니라
+// => 독립적으로 만들어서 사용하는 반복자
+// => 컨테이너에 삽입할때 사용
+
 int main()
 {
 	std::list<int> s = { 1, 2, 3, 4, 5};
@@ -12,7 +17,7 @@ int main()
 
 
 	// 방법 2. 삽입 반복자 사용
-	std::back_insert_iterator bi(s);
+	std::back_insert_iterator bi(s); // C++17
 
 	*bi = 20;	// s.push_back(20)
 	*bi = 30;	// s.push_back(30)
