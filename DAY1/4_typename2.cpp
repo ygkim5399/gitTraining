@@ -62,3 +62,15 @@ list<int>::value_type n = s.front(); // n의 타입을 생각해보세요..
 //		3.
 // 일반 클래스 : 멤버 데이타, 멤버 함수
 // STL 컨테이너: 멤버 데이타, 멤버 함수, 멤버 타입
+
+template<typename T>
+class list
+{
+	// 1. member data...
+public:
+	// 2. member function
+
+	// 3. member type <=== STL 의 특징(각 컨테이너 별로 10여개의 정도 있습니다.)
+	using value_type = T;
+	using iterator = list_iterator<T>;
+};
