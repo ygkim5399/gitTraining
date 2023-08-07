@@ -3,9 +3,11 @@
 
 // 주어진 구간 [first ~ last) 의 합을 구하는 sum 함수를 만들어 봅시다.
 template<typename T>
-? sum(T first, T last)
+typename T::value_type sum(T first, T last)
 {
-	? s = 0;
+	// T             : 반복자 타입
+	// T::value_type : 반복자가 가리키는 요소의 타입
+	typename T::value_type s = 0;
 
 	while (first != last)
 	{
@@ -14,7 +16,6 @@ template<typename T>
 	}
 	return s;
 }
-
 
 int main()
 {
