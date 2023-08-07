@@ -78,4 +78,7 @@ int main()
 
 	// ss, vv, st 의 반복자를 꺼내서 p1, p2, p3 에 담아 보세요
 	// => auto 사용하지 말고, 코드 만들어 보세요
+	std::list<int>::iterator p1 = ss.begin();
+	std::vector<int>::iterator p2 = vv.begin();
+	std::string::iterator p3 = st.begin();
 }
