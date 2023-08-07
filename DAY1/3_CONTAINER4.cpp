@@ -1,4 +1,7 @@
 #include <iostream>
+#include <list>		// 
+#include <vector>	//
+#include <string>
 
 template<typename T> struct Node
 {
@@ -44,8 +47,14 @@ public:
 	{
 		head = new Node<T>(a, head);
 	}
-	slist_iterator<T> begin() { return slist_iterator<T>(head); }
-	slist_iterator<T> end() { return slist_iterator<T>(nullptr); }
+
+	// 모든 컨테이너(list 같은 자료구조를 구현한 클래스) 는
+	// 자신의 반복자 이름을 약속된 이름(iterator)으로 외부에 알려야 한다
+	using iterator = slist_iterator<T>;  
+					// typedef slist_iterator<T> iterator
+
+	iterator begin() { return iterator(head); }
+	iterator end()   { return iterator(nullptr); }
 };
 
 
@@ -58,7 +67,15 @@ int main()
 	s.push_front(30);
 	s.push_front(40);
 	s.push_front(50);
-
 	
-	slist_iterator<int> p = s.begin();
+	slist<int>::iterator p = s.begin();
+
+	//------------------------
+	// 실제 STL 의 반복자를 꺼내 봅시다.
+	std::list<int>   ss = { 1,2,3 };
+	std::vector<int> vv = { 1,2,3 };
+	std::string st = "hello";
+
+	// ss, vv, st 의 반복자를 꺼내서 p1, p2, p3 에 담아 보세요
+	// => auto 사용하지 말고, 코드 만들어 보세요
 }
