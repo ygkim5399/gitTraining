@@ -8,17 +8,23 @@
 
 template<typename T> struct iterator_traits
 {
-	using value_type = T::value_type;
+	using value_type = typename T::value_type;
 };
 
+// T가 raw pointer 일때를 위한 부분 특수화
+template<typename T> struct iterator_traits<T*>
+{
+	using value_type = T;
+};
 
 template<typename T>
-typename T::value_type sum(T first, T last)
+typename std::iterator_traits<T>::value_type sum(T first, T last)
 {
 	// T : 반복자 인데, 현재는 int* 입니다.
 
 //	typename T::value_type s = 0;
-	typename iterator_traits<T>::value_type s = 0;
+//	typename iterator_traits<T>::value_type s = 0;
+	typename std::iterator_traits<T>::value_type s = 0;
 
 
 
