@@ -16,6 +16,7 @@ int main()
 				  // 반복자가 "무효화(invalidate)" 되었다고 합니다.
 					
 			      // vector 가 아닌 list 라면 어떨까요 ?
+				  // => list 는 크기를 키울때는 반복자가 무효화 되지 않습니다.
 				  // "cppreference.com" 에서 std::vector 검색
 
 	std::cout << *p << std::endl; // ???
