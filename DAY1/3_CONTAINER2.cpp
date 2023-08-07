@@ -16,24 +16,23 @@ template<typename T> class slist_iterator
 {
 	Node<T>* current;
 public:
-	slist_iterator(Node<T>* p = nullptr) : current(p) {}
+	inline slist_iterator(Node<T>* p = nullptr) : current(p) {}
 
-	slist_iterator& operator++()
+	inline slist_iterator& operator++()
 	{
 		current = current->next;
 		return *this;
 	}
-	T& operator*()
+	inline T& operator*()
 	{
 		return current->data;
 	}
-
 	// find 에 전달하려면 "++, *" 뿐 아니라 == 와 != 가 있어야 합니다.
-	bool operator==(const slist_iterator& it) const
+	inline bool operator==(const slist_iterator& it) const
 	{
 		return current == it.current;
 	}
-	bool operator!=(const slist_iterator& it) const
+	inline bool operator!=(const slist_iterator& it) const
 	{
 		return current != it.current;
 	}
