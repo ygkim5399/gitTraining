@@ -21,7 +21,7 @@ void print_first_element(std::vector<T>& v)
 template<typename T>
 void print_first_element(T& v)
 {
-
+	// T : std::list<double>
 	? n = v.front();
 
 	std::cout << n << std::endl;
@@ -35,3 +35,14 @@ int main()
 
 	print_first_element(v);
 }
+
+// 템플릿 기반의 컨테이너가 "저장하는 타입"을 알고 싶을때가 있습니다.
+// ( 위 print_first_element 처럼)
+// 그래서, STL의 모든 컨테이너는 아래 처럼되어 있습니다.
+template<typename T> class list
+{
+public:
+	using value_type = T; // 핵심!!!
+};
+list<int> s = { 1,2,3 };
+list<int>::value_type n = s.front(); // n의 타입을 생각해보세요..
