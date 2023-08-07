@@ -24,7 +24,7 @@ void print_first_element(T& v)
 	// T               : std::list<double>
 	// T::value_type  : std::list<double>::value_type => double
 	typename T::value_type n = v.front();
-
+	
 	std::cout << n << std::endl;
 }
 
@@ -45,6 +45,7 @@ template<typename T> class list
 {
 public:
 	using value_type = T; // 핵심!!!
+						  // typedef T value_type ;
 
 	//......
 };
@@ -53,3 +54,11 @@ list<int> s = { 1,2,3 };
 list<int>::value_type n = s.front(); // n의 타입을 생각해보세요..
 									 // int n
 */
+
+// 핵심 1. typename 키워드 필요한 이유 알아두세요
+// 
+//      2. C 가 컨테이너 일때 "C::value_type" 이 요소의 타입이라는 점
+
+//		3.
+// 일반 클래스 : 멤버 데이타, 멤버 함수
+// STL 컨테이너: 멤버 데이타, 멤버 함수, 멤버 타입
