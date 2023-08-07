@@ -50,6 +50,14 @@ public:
 
 // STL_ALGORITHM6 에서 find 복사해오세요
 
+
+// 반복자(slist_iterator) 덕분에..
+// find 는 "배열" 뿐 아니라 "slist" 에서도 선형 검색이 가능합니다.
+
+// 즉, find 는
+// "배열" 뿐 아니라 "모든 자료구조" 에서 선형 검색이 가능해 집니다.
+
+// 진정한 "일반화!!!" 입니다.
 template<typename T1, typename T2>
 T1 find(T1 first, T1 last, T2 value)
 {
