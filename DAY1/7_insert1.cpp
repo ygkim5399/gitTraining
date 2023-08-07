@@ -14,6 +14,11 @@ int main()
 	// 방법 2. 삽입 반복자 사용
 	std::back_insert_iterator bi(s);
 
-	*bi = 20;
-	*bi = 30;
+	*bi = 20;	// s.push_back(20)
+	*bi = 30;	// s.push_back(30)
+
+	for (auto e : s)
+	{
+		std::cout << e << std::endl;
+	}
 }
