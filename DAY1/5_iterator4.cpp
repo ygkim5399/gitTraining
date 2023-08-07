@@ -19,7 +19,7 @@ int main()
 				  // => list 는 크기를 키울때는 반복자가 무효화 되지 않습니다.
 				  // "cppreference.com" 에서 std::vector 검색
 
-	std::cout << *p << std::endl; // ???
+	std::cout << *p << std::endl; // runtime-error
 }
 
 
