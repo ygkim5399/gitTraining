@@ -15,6 +15,7 @@ int main()
 	for (auto e : v)
 		s1.push_back(e);
 
+
 	// 방법 2. 삽입삽복자 와 std::copy 사용
 //	std::back_insert_iterator< std::list<int> > bi(s2);
 //	std::copy(v.begin(), v.end(), bi);
