@@ -16,11 +16,10 @@ public:
 
 	using container_type = T;
 
-	myback_insert_iterator(T& c) : container(&c) {}
+	constexpr myback_insert_iterator(T& c) : container(&c) {}
 
-	myback_insert_iterator& operator*() { return *this; }
-
-	myback_insert_iterator& operator=(const typename T::value_type& e)
+	constexpr myback_insert_iterator& operator*() { return *this; }
+	constexpr myback_insert_iterator& operator=(const typename T::value_type& e)
 	{
 		container->push_back(e);
 		return *this;
@@ -29,8 +28,8 @@ public:
 	// 삽입반복자는 ++에서 해야할 일은 없습니다.
 	// 하지만, 모든 반복자는 ++ 을 지원해야 한다는 규칙이 있으므로
 	// 아래처럼 아무일도 하지 않는 ++을 제공..
-	myback_insert_iterator& operator++()    { return *this; }
-	myback_insert_iterator& operator++(int) { return *this; }
+	constexpr myback_insert_iterator& operator++()    { return *this; }
+	constexpr myback_insert_iterator& operator++(int) { return *this; }
 };
 
 int main()
