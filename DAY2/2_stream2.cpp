@@ -9,7 +9,8 @@ int main()
 	std::ostream_iterator<int> p1(std::cout, ", ");
 	*p1 = 20; 
 
-	std::ofstream fout("a.txt");
+	std::ofstream fout("a.txt"); // C++에서 파일 출력을 위한 객체
+
 	std::ostream_iterator<int> p2(fout, ", ");
 	*p2 = 20;
 
