@@ -19,5 +19,8 @@ int main()
 
 	std::list<int> s = { 1,2,3 };
 
+	// 스트림 반복자 덕분에 컨테이너의 모든 요소 출력도 
+	// std::copy로 가능합니다.
+	std::copy(s.begin(), s.end(), p);
 
 }
