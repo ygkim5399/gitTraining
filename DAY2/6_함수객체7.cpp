@@ -28,12 +28,21 @@ int main()
 	std::sort(x, x + 10, cmp2); // sort(int*, int*, bool(*)(int, int)) 모양의 함수 생성
 
 
-
 	// 2. 비교정책으로 함수객체 사용시
+
+	// 장점 : 비교 정책 함수가 인라인 치환 됩니다.
+	// => 빠릅니다.
+	// => 데이타 양이 많다면 확실히 빨라 집니다.
+
+
+	// 단점 : 비교 정책을 교체한 횟수 만큼의 sort() 함수 생성
+	// => 코드 메모리 증가!
+
+
 	Less    f1;
 	Greater f2;
-	std::sort(x, x + 10, f1);
-	std::sort(x, x + 10, f2);
+	std::sort(x, x + 10, f1); // sort(int*, int*, Less) 모양의 함수 생성
+	std::sort(x, x + 10, f2); // sort(int*, int*, Greater) 모양의 함수 생성
 }
 
 
