@@ -18,7 +18,7 @@ int main()
 	// 2. "3의 배수"를 -1로 변경해 보세요
 	// "Pred" : predicator(조건자)를 의미, 반환값이 bool 은 함수
 	std::replace_if(v.begin(), v.end(), 
-					[](int n) { return n % 3 == 0; }, 
+					[](int n) { return n != 0 && n % 3 == 0; }, 
 					-1);
 
 	show(v); //  0, 2, -1, 0, 2, -1, 0, 2, -1, 0
