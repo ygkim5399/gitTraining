@@ -26,7 +26,6 @@ int main()
 	std::list<int>::const_iterator p3 = s.cbegin(); // std::cbegin(s);
 //	*p3 = 10; // error. 상수 반복자는 읽기만 가능
 
-
 	// 4. 상수 역 반복자(const reverse iterator)
-	std::list<int>::const_reverse_iterator p3 = s.crbegin(); // std::crbegin(s);
+	std::list<int>::const_reverse_iterator p4 = s.crbegin(); // std::crbegin(s);
 }
