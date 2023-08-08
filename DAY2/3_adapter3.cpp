@@ -15,5 +15,5 @@ int main()
 		++p1;
 	}
 
-//	auto ret = std::find(p1, p2, 3);
+	auto ret = std::find(s.begin(),s.end(), 3);
 }
