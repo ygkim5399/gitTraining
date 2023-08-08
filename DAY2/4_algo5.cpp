@@ -23,5 +23,9 @@ int main()
 
 	show(v);
 	show(s);
+
+	// reverse는 아래 버전이 있습니다.
+//	std::ranges::reverse(v);
+//	std::ranges::reverse(s);
 }
 
