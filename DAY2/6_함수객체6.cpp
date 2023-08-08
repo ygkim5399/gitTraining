@@ -1,3 +1,5 @@
+#include <algorithm>
+
 // 3_함수객체6
 // 
 // 
@@ -21,12 +23,29 @@ struct Greater
 	inline bool operator()(int a, int b) { return a > b; }
 };
 
+
+// 비교 정책을 교체할수 있는데, 비교 정책의 인라인 치환이 가능한 sort
+// "template" + "함수객체" 를 사용하는 기술
+// => STL 의 핵심 설계 철학
+
+template<typename T>
+void Sort(int* x, int sz, T cmp )
+{
+	for (int i = 0; i < sz - 1; i++)
+	{
+		for (int j = i + 1; j < sz; j++)
+		{
+			if (cmp(x[i], x[j]) == true)
+				std::swap(x[i], x[j]);
+		}
+	}
+}
 int main()
 {
 	int x[10] = { 1,3,5,7,9,2,4,6,8,10 };
 
-	Less    f1; f1(1, 2); 
-	Greater f2; f2(1, 2); 
+	Less    f1; f1(1, 2); Sort(x, 10, f1); // ok
+	Greater f2; f2(1, 2); Sort(x, 10, f2); // ?
 }
 
 
