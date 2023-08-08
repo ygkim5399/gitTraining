@@ -16,13 +16,25 @@ public:
 		bs.set();  // 모든 비트를 1로
 	}
 
-
-
-
 	int operator()()
 	{
-		return rand() % 10;
+		int k = -1;
+
+		while ( !bs.test(k = rand() % 10) );
+
+		bs.reset(k);
+
+		return k;
 	}
+
+
+
+
+
+
+
+
+
 };
 
 URandom urand; // urand 는 객체지만 "함수처럼 사용가능" 합니다.
