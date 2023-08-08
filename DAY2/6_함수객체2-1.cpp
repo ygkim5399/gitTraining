@@ -18,6 +18,13 @@ public:
 
 	int operator()()
 	{
+		if (bs.none()) // 모두 0인 경우
+		{
+			if (recycle == true)
+				bs.set();  // 다시 모두 1로
+			else
+				return -1;
+		}
 		int k = -1;
 
 		while ( !bs.test(k = rand() % 10) );
@@ -27,21 +34,13 @@ public:
 		return k;
 	}
 
-
-
-
-
-
-
-
-
 };
 
 URandom urand; // urand 는 객체지만 "함수처럼 사용가능" 합니다.
 
 int main()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 15; i++)
 		std::cout << urand() << std::endl;
 }
 
