@@ -17,7 +17,13 @@ void show(const C& c)
 template<typename T>
 void show(T first, T last)
 {
-	std::ostream_iterator< ? > p(std::cout, ", ");
+	// 아래 코드는 "T" 가 객체형 반복자 일때만 가능하고
+	// "raw pointer" 일때는 안됩니다.
+//	std::ostream_iterator< typename T::value_type  > p(std::cout, ", ");
+
+	// 아래 처럼하면 "T" 가 raw pointer 도 가능..
+	// => 가장 좋은 코드.
+	std::ostream_iterator< typename std::iterator_traits<T>::value_type  > p(std::cout, ", ");
 
 	std::copy(first, last, p);
 
