@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
+/*
 // 1. container 버전
 // => "range - for" 로 사용하는 것이 가장 좋습니다.
 template<typename C>
@@ -29,7 +30,9 @@ void show(T first, T last)
 
 	std::cout << "\n";
 }
-
+*/
+#include "show.h" // 위 2개 함수가 이 헤더에 있습니다.	
+				  // 이 시간 이후 부터는 이 헤더 사용하겠습니다.
 int main()
 {
 	std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10 };
