@@ -2,6 +2,17 @@
 #include <algorithm>
 #include <iostream>
 
+// 1. container 버전
+// => "range - for" 로 사용하는 것이 가장 좋습니다.
+template<typename C>
+void show(const C& c)
+{
+	for (auto e : c)
+		std::cout << e << ", ";
+
+	std::cout << "\n";
+}
+
 int main()
 {
 	std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10 };
