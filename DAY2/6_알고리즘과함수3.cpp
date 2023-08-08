@@ -22,7 +22,10 @@ int main()
 	auto p1 = std::find(v.begin(), v.end(), 3);
 
 	// 주어진 구간에서 "3배수" 를 찾고 싶다.
-	auto p2 = std::find_if(v.begin(), v.end(), foo );
+//	auto p2 = std::find_if(v.begin(), v.end(), foo );
+
+	// 위 코드 람다 표현식으로 만들어 보세요.
+	auto p2 = std::find_if(v.begin(), v.end(), [](int n) { return n % 3 == 0; });
 
 	std::cout << *p2 << std::endl; // 6
 
