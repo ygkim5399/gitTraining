@@ -27,7 +27,7 @@ public:
 		}
 		int k = -1;
 
-		while ( !bs.test(k = rand() % 10) );
+		while ( !bs.test( k = rand() % 10 ) );
 
 		bs.reset(k);
 
