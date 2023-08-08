@@ -27,4 +27,9 @@ int main()
 
 	// 한번만 사용하면 "임시객체" 형태로 보내는 것이 좋습니다.
 	std::sort(v.begin(), v.end(), std::less<int>() );
+
+
+	// 4. 비교정책으로 람다 표현식 사용
+	// => 함수 객체와 동일한 효과
+	std::sort(v.begin(), v.end(), [](int a, int b) {return a < b; });
 }
