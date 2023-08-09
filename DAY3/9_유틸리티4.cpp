@@ -2,7 +2,7 @@
 #include <fstream>  
 #include <sstream>  
 #include <string>
-
+#include <iomanip>
 int main()
 {
 	double d = 3.141592; // 사용자가 입력했다고 가정
@@ -15,9 +15,13 @@ int main()
 
 	// C++ 스타일
 	std::ostringstream oss;
+	oss << std::setprecision(10);
+
 	oss << "d = " << d;  // cout 과 사용법 동일
 
 	std::string s = oss.str();
+
+	
 
 	std::cout << s << std::endl;
 }
