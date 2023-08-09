@@ -28,7 +28,16 @@ int main()
 
 	std::cout << v.size() << std::endl;	    // 8
 	std::cout << v.capacity() << std::endl;	// 8	
-	
+
+	v.push_back(5); // 끝에 한개 추가
+					// size == capacity 상태 이므로 버퍼(메모리) 재할당 필요
+					// 현재 8개 인데, 9개 크기를 할당하는 것이 아니라
+					// VS  : 기존 크기 * 1.5 로 키우고
+					// G++ : 기존 크기 * 2   로 키우게 됩니다.
+
+	std::cout << v.size() << std::endl;	    // 9
+	std::cout << v.capacity() << std::endl;	// 12
+
 }
 
 
