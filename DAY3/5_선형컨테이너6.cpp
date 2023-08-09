@@ -30,6 +30,10 @@ int main()
 
 		// i 글자를 공백으로 치환
 		std::replace(e.begin(), e.end(), 'i', ' ');
+
+
+		// 과제 1. 영어 소문자를 대문자로 변경해서 출력. std::for_each
+		//      2. 숫자를 모두 공백으로 변경.. - replace_if
 	}
 
 
