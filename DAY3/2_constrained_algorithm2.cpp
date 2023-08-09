@@ -15,9 +15,16 @@ int main()
 
 
 	// Python : 단항함수를 전달..
-	sort(v.begin(), v.end(), [](int a) { return abs(a); });
+//	sort(v.begin(), v.end(), [](int a) { return abs(a); });
 
 
+	// C++20 에서 위와 같은 단항함수를 "projection" 이라고 합니다.
+	std::ranges::sort(v.begin(), v.end(),
+					std::less<int>(),  // < 연산으로 비교	
+					[](int a) { return abs(a); });	// projection
+
+	// 2개 요소를 각각 projection 에 보내서, 나온 결과를 
+	// 3번째 인자의 비교 함수에 전달.. 
 
 
 	show(v);
