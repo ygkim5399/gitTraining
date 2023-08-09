@@ -5,22 +5,26 @@
 #include <vector>
 #include <deque>
 
-template<typename T>
+template<typename T, typename C = std::deque<T> >
 class stack 
 {
-	std::list<T> c;
+	C c;
 public:
-	void push(const T& a)	{ c.push_back(a); }
-	void pop()				{ c.pop_back(); }
-	T& top()				{ return c.back(); }
+	inline void push(const T& a)	{ c.push_back(a); }
+	inline void pop()				{ c.pop_back(); }
+	inline T& top()				{ return c.back(); }
 };
 
 int main()
 {
-	stack<int> s;
-	s.push(10);
-	s.push(20);
+	stack<int, std::list<int> >   s1;
+	stack<int, std::vector<int> > s2;
 
-	std::cout << s.top() << std::endl;	
+	stack<int> s3; // std::deque »ç¿ë
+
+	s1.push(10);
+	s1.push(20);
+
+	std::cout << s1.top() << std::endl;	
 }
 
