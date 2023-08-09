@@ -17,7 +17,8 @@ int main()
 		pq;
 		*/
 
-	std::priority_queue<int, std::vector<int>, std::greater<int> > pq;
+	std::priority_queue< int, std::vector<int>, std::greater<int> > pq;
+
 
 	pq.push(10);
 	pq.push(-30);
