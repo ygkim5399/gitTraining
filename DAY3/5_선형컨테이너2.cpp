@@ -15,6 +15,13 @@ int main()
 
 	std::vector<int> v4(v3); // v3 의 요소를 복사!!
 
+	show(v1);
+	show(v2);
+	show(v3);
+	show(v5);
+	show(v4);
+
+
 
 	std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10 };
 
@@ -28,20 +35,20 @@ int main()
 
 	// 3. 제거
 // 	v.pop_front(); // 전방 삭제, 단, vector 는 안됨.
-	v.pop_back();  // 후방 삭제
+//	v.pop_back();  // 후방 삭제
 
 	// 임의 삭제
 //	v.erase(반복자);  // 한개 삭제
 //	v.erase(반복자1, 반복자2);  // [반복자1, 반복자2) 구간 삭제
 
-	v.clear(); // 모두 제거
+//	v.clear(); // 모두 제거
 
 	// 4. 접근
 	int n1 = v.front(); // ok. vector 도 가능
 	int n2 = v.back(); 
 
-	int n3 = v[3];   // vector, deque 만 가능, list 안됨.
-	int n4 = v.at(3);// vector, deque 만 가능, list 안됨.
+	int n3 = v[1];   // vector, deque 만 가능, list 안됨.
+	int n4 = v.at(1);// vector, deque 만 가능, list 안됨.
 					 // [] 와 차이점은 뒤에서.. 
 
 	// list 의 임의 접근은 "반복자를 꺼내야 합니다"
@@ -54,4 +61,9 @@ int main()
 
 	v.assign(s.begin(), s.end()); // v 를 s.begin() ~ s.end() 의요소로
 									// 교체
+
+	// 생각 보다 멤버 함수가 적은것 같습니다.???
+	// => 알고리즘이 있으므로.!!
+	// => sort 하고 싶으면 std::sort(v.begin(), v.end());
+	// => 뒤집고  싶으면 std::reverse(v.begin(), v.end());
 }
