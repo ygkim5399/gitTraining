@@ -21,6 +21,9 @@ int main()
 	std::get<0>(t1) = 100;  // 파이썬의 t1.0 = 100
 
 	std::cout << std::get<0>(t1) << std::endl; // 100
+
+	std::cout << sizeof(std::pair<int, double>) << std::endl;
+	std::cout << sizeof(std::tuple<int, double>) << std::endl;
 }
 // tuple 만 있으면 되지 ?? 왜 pair 를 사용해야 하나요 ?
 // pair : C++98
@@ -33,3 +36,10 @@ int main()
 // 대부분 다른 언어의 tuple : 컴파일러 자체가 인식하는 타입
 // C++ tuple : 클래스로 만든 것. 
 //			  사용자들이 직접 만들어도 됩니다.
+
+
+// 2개만 관리할때는 pair 를 선호
+// => 클래스 자체가 가볍고.
+// => 컴파일 시간도 줄어 듭니다.
+
+// tuple 은 가변인자 템플릿 - 컴파일 시간.!!
