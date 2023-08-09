@@ -18,6 +18,9 @@ int main()
 	// C++17 이전이라도 pair 를 만드는 함수 템플릿을 사용하면 
 	// 타입 인자 생략가능. 
 	auto p4 = std::make_pair(1, 3.4);
+
+	// 함수 인자로 pair 보낼때는 아래 처럼하면 편리합니다.
+	foo( std::make_pair(1, 3.4) );
 }
 
 
