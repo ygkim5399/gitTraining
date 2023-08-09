@@ -24,11 +24,9 @@ namespace std
 				   // ADL 규칙에 적용되지 않고, 함수보다 우선 선택
 	}
 }
-
 int main()
 {
 	std::string s1, s2;
-
 	std::max(s1, s2);			// std::max
 	std::ranges::max(s1, s2);	// std::ranges::max
 
@@ -36,3 +34,5 @@ int main()
 
 	max(s1, s2);	
 }
+// cppreference.com 에서 "std::ranges::max" 찾으세요
+// "possible implementation" 보세요
