@@ -17,5 +17,12 @@ int main()
 
 	int sz = arr.size();
 	
-	arr.resize(10); // 될까요 ??
+//	arr.resize(10); // 될까요 ??
+					// 크기를 변경하려면 "메모리 할당/해지"가 되어야 하는데..
+					// std::array 는 "힙" 이 아닌 "stack" 메모리 사용
+					// => size 변경은 할수 없습니다.
+
+	// std::array
+	// => C++11 에서 추가
+	// => "raw array" + 몇가지 멤버 함수를 추가한것(size(), empty(), begin()..)
 }
