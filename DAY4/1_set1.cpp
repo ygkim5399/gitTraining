@@ -37,6 +37,9 @@ int main()
 
 	auto ret = s.insert(15);  // 실패
 
+	// auto 가 없던 시절은 아래처럼 했습니다.
+//	std::pair<std::set<int>::iterator, bool> ret = s.insert(15);
+
 	if (ret.second == false)
 	{
 		std::cout << "insert 실패" << std::endl;
