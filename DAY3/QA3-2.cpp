@@ -28,9 +28,22 @@ iterator begin2() { return iterator(x); }
 
 int main()
 {
-	auto p1 = ++begin1(); // int* p1
-	auto p2 = ++begin2(); // iterator p2
+	
+	// 실제 주소는 rvalue 입니다. rvalue는 ++ 될수 없습니다.
+	// => ++3 이 안되는 것과 같은 이유
+	// => 단, 포인터 "변수"는 ++됩니다.
+
+	// 임시객체도 rvalue 입니다.
+	// => 그런데, rvalue 라도 멤버 함수는 호출됩니다.
+	auto p1 = ++begin1(); // error. ++(100번지)
+	auto p2 = ++begin2(); // ok.    ++(임시객체) => 임시객체.operator++()
 
 	std::cout << *p1 << std::endl;
-	std::cout << *p2 << std::endl;
+	std::cout << *p2 << std::endl; // 2
+
+//	std::vector<int> v = { 1,2,3,4,5 };
+
+//	auto p3 = ++v.begin(); // vector 의 반복자를 진짜 포인터로 했다면
+							// 이코드는 에러 입니다.
+							// 하지만 실제 STL 에서는 에러가 아닙니다.
 }
