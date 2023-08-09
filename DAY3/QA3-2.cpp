@@ -35,8 +35,12 @@ int main()
 
 	// 임시객체도 rvalue 입니다.
 	// => 그런데, rvalue 라도 멤버 함수는 호출됩니다.
-	auto p1 = ++begin1(); // error. ++(100번지)
+//	auto p1 = ++begin1(); // error. ++(100번지)
+	
 	auto p2 = ++begin2(); // ok.    ++(임시객체) => 임시객체.operator++()
+
+	// 위 p1 코드 되게 하려면 아래 처럼 하면 됩니다
+	auto p1 = std::next(begin1(), 1);
 
 	std::cout << *p1 << std::endl;
 	std::cout << *p2 << std::endl; // 2
@@ -47,3 +51,4 @@ int main()
 							// 이코드는 에러 입니다.
 							// 하지만 실제 STL 에서는 에러가 아닙니다.
 }
+// cppreference.com 에서 std::next 검색 해 보세요
