@@ -38,6 +38,27 @@ int main()
 	std::cout << v.size() << std::endl;	    // 9
 	std::cout << v.capacity() << std::endl;	// 12
 
+	v.resize(15);	// size = 15 로 되지만
+					// capacity = 기존 capacity(12) * 1.5 => 18
+
+	std::cout << v.size() << std::endl;	    // 9
+	std::cout << v.capacity() << std::endl;	// 18
+	//------------------------------------------------------
+
+//	v.clear(); // 이 코드가 진짜로 메모리를 제거할까요 ?
+			   // size 만 0 으로 
+	v.erase(v.begin(), v.end()); // 역시, size 만 0으로 
+
+	std::cout << v.size() << std::endl;	    // 0
+	std::cout << v.capacity() << std::endl;	// 18
+
+	// 진짜 메모리를 지우려면
+	v.clear(); // clear 하고
+	v.shrink_to_fit(); // 실제 메모리 제거
+
+	std::cout << v.size() << std::endl;	    // 0
+	std::cout << v.capacity() << std::endl;	// 0
+
 }
 
 
