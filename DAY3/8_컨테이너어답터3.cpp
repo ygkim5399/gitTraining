@@ -17,7 +17,10 @@ int main()
 	std::queue<int, std::deque<int>>  q3; // ok
 
 	// 단, 컴파일 하면, 위 코드 자체가 에러는 아닙니다.
-	q2.push(10);
+	q2.push(10); // ok.  내부적으로 vector.push_back(10)  으로 넣는다는 의미
+
+	q2.pop(); // error. vector.pop_front() 를 시도 하는데..
+			  //        vector 에는 pop_front()가 없다.
 }
 
 
