@@ -17,14 +17,24 @@ int main()
 
 	std::string s;
 
-	while (std::getline(f, s))
+	while (std::getline(f, s)) // 파일에서 "한 문장" 읽기
 		v.push_back(s);
 	//----------------------------
 
+//	std::reverse( v.begin(), v.end() ); // 파일 상하로 뒤집기
+//	std::reverse( v[0].begin(), v[0].end()); // 1번째 줄을 좌우 뒤집기
+	
+	for (auto& e : v)
+	{
+	//	std::reverse(e.begin(), e.end());
+
+		// i 글자를 공백으로 치환
+		std::replace(e.begin(), e.end(), 'i', ' ');
+	}
 
 
 	//-------------------------------------
-	for (auto& n : v)
+	for (auto& n : v)  // n 은 결국 std::string
 		std::cout << n << std::endl;
 }
 
