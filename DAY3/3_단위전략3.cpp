@@ -15,10 +15,22 @@ public:
 	// 템플릿 생성자도 필요 한데, 관례적으로 아래 처럼만 하면 됩니다.
 	template<typename U> debug_alloc(debug_alloc<U>&) {}
 
+	T* allocate(std::size_t sz) 
+	{
+		void* ptr = malloc(sizeof(T) * sz);
 
-	T* allocate(std::size_t sz) {}
-	void deallocate(T* ptr, std::size_t sz) {}
+		printf("allocate : %p, %d cnts\n", ptr, sz);
+
+		return static_cast<T*>(ptr);
+	}
+	void deallocate(T* ptr, std::size_t sz) 
+	{
+		printf("deallocate : %p, %d cnts\n", ptr, sz);
+		free(ptr);
+	}
 };
+
+
 
 int main()
 {
