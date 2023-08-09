@@ -18,11 +18,40 @@ int main()
 
 	std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10 };
 
-	// 2. 삽입, 
-	
+	// 2. 추가(삽입)
+//	v.push_front(10); // 전방 삽입. 단, vector 는 안됨
+	v.push_back(10);  // 후방 삽입
 
-	// 3. 접근
-	
-	// 4. 요소 변경
+//	v.insert(위치, 20); // 위치(반복자) 앞에 20 삽입
+	v.insert(std::next(v.begin(), 3), 20);
 
+
+	// 3. 제거
+// 	v.pop_front(); // 전방 삭제, 단, vector 는 안됨.
+	v.pop_back();  // 후방 삭제
+
+	// 임의 삭제
+//	v.erase(반복자);  // 한개 삭제
+//	v.erase(반복자1, 반복자2);  // [반복자1, 반복자2) 구간 삭제
+
+	v.clear(); // 모두 제거
+
+	// 4. 접근
+	int n1 = v.front(); // ok. vector 도 가능
+	int n2 = v.back(); 
+
+	int n3 = v[3];   // vector, deque 만 가능, list 안됨.
+	int n4 = v.at(3);// vector, deque 만 가능, list 안됨.
+					 // [] 와 차이점은 뒤에서.. 
+
+	// list 의 임의 접근은 "반복자를 꺼내야 합니다"
+//	auto p = list.begin();
+//	std::advance(p, 4);
+
+
+	// 5. 요소 변경
+	std::list<int> s = { 1,2,3 };
+
+	v.assign(s.begin(), s.end()); // v 를 s.begin() ~ s.end() 의요소로
+									// 교체
 }
