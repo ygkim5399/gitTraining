@@ -15,12 +15,15 @@ public:
 	inline T& top()				{ return c.back(); }
 };
 
+#include <stack> // STL stack, 이 헤더안에 위와 유사한 코드가 있습니다.	
+				 // 흔히 "sequence container adapter" 라고도 합니다.
+
 int main()
 {
-	stack<int, std::list<int> >   s1;
+	stack<int, std::list<int> >   s1; // list 를 stack 처럼 변경해달라는 의미
 	stack<int, std::vector<int> > s2;
 
-	stack<int> s3; // std::deque 사용
+	std::stack<int> s3; // std::deque 사용
 
 	s1.push(10);
 	s1.push(20);
