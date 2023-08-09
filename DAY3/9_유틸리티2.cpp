@@ -18,7 +18,7 @@ int main()
 	auto t3 = std::make_tuple(1, 3.4, 2); 
 
 	// tuple 의 요소 접근은 std::get을 사용
-	std::get<0>(t1) = 100;
+	std::get<0>(t1) = 100;  // 파이썬의 t1.0 = 100
 
 	std::cout << std::get<0>(t1) << std::endl; // 100
 }
