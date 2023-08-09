@@ -9,6 +9,9 @@
 // 1. 새로 만들자.
 // 2. list를 스택처럼 보이게 하자.
 
+// adapter 패턴 : 기존 클래스의 인터페이스(함수이름)을 변경해서
+//				  다른 클래스 처럼 보이게 하는 디자인 패턴
+
 // list 의 함수 이름을 변경해서 stack 처럼 보이도록 해 봅시다.
 template<typename T> 
 class stack : public std::list<T>
@@ -18,7 +21,6 @@ public:
 	void pop()            { std::list<T>::pop_back(); }
 	T& top()              { return std::list<T>::back(); }
 };
-
 int main()
 {
 	stack<int> s;
@@ -27,4 +29,9 @@ int main()
 
 	std::cout << s.top() << std::endl;
 
+//	s.push_front(30);	// 사용자가 실수했다.
+						// stack 이 잘못된 상태가 된다.
 }
+
+// java 의 스택이 위 코드와 유사하게 "vector" 로 부터 상속으로 만들었습니다.
+// => 잘못된 디자인의 대표적인 예!
