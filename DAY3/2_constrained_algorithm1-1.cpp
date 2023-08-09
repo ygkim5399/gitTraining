@@ -15,3 +15,4 @@ int main()
 	auto ret2 = std::ranges::find(v.begin(), v.end(), 3);
 	auto ret3 = std::ranges::find(v, 3);
 }
+// ranges : [first, last) 의 반복자 2개의 쌍을 "범위(ranges)" 라고 부릅니다.
