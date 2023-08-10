@@ -7,17 +7,17 @@
 int main()
 {
 	std::map<std::string, std::string> m;
-			// set<pair<string, string>> 의 의미에..
-			// 사용하기 쉽도록 [] 등의 기능을 더 추가한것.. 
+	// set<pair<string, string>> 의 의미에..
+	// 사용하기 쉽도록 [] 등의 기능을 더 추가한것.. 
 
-	// 요소 넣기
-	// 1. pair 만들어서 넣기
+// 요소 넣기
+// 1. pair 만들어서 넣기
 	std::pair<std::string, std::string> p1("mon", "월요일");
 
 	m.insert(p1);
 
 	// 2. make_pair
-	m.insert( std::make_pair("tue", "화요일") );
+	m.insert(std::make_pair("tue", "화요일"));
 
 
 	// 3. [] 연산자 사용
@@ -33,7 +33,7 @@ int main()
 	// 핵심 : map 의 요소는 pair 이다.!!
 
 	//------------------------
-	
+
 	// 반복자에 대해서	
 	auto p = m.find("wed"); // find(키값)
 
@@ -53,8 +53,8 @@ int main()
 	// [] 연산자
 	// 현재 m 에는 "sun" 키값이 없습니다.
 	std::cout << m["sun"] << std::endl;	 // 1. sun 키값이 없으므로 예외 발생
-										 // 2. ("sun", "") 으로 새롭게 데이타 추가
-										// => 2번 입니다.
+	// 2. ("sun", "") 으로 새롭게 데이타 추가
+   // => 2번 입니다.
 
 	// 따라서, map 에 특정 키값이 있는지 조사할때는 [] 연산 사용하지 마세요
 	// find 로 찾으세요
@@ -63,6 +63,11 @@ int main()
 	{
 		// "sat" 없음..
 	}
+
+	// C++20 부터는 contains 멤버 함수가 추가되었습니다.
+	if (m.contains("sat")) {} //
+
+
 
 }
 
