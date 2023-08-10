@@ -36,9 +36,34 @@ int main()
 	v.emplace_back(1, 2); // 이 멤버 함수가 내부적으로
 						  // new Point(1,2) 로 추가!
 
-
 	std::cout << "------------------" << std::endl;	
 }
 
+// 정리
+// 컨테이너가
+// 1. primitive type(int, double, char 등)을 저장하는 경우
+// => std::vector<int>
+// => push_xxx(), insert()... 를 사용하면 됩니다.
+// => 물론, emplace_xxx()를 사용해도 됩니다.
 
+// 2. 컨테이너가 사용자 정의 타입의 주소를 보관하는 경우
+// => std::vector<Point*> v;
+// => 주소는 결국 정수값(32bit, 64bit)의 의미 입니다.
+// => push_xxx(), insert()... 를 사용하면 됩니다.
+// => 물론, emplace_xxx()를 사용해도 됩니다.
+
+// 3. 컨테이너가 사용자 정의 타입을 "값"으로 보관하는 경우. 
+// => std::vector<Point> v;
+// 
+// Point pt(1,2);	// 외부에서 객체를 만들고
+// v.push_back(pt); // pt 의 복사본 보관
+					// 즉, 2개의 객체가 생성된것!!
+
+// v.emplace_back(1,2); // emplace_back 안에서 객체 생성
+//					    // 즉, 한개의 객체!!
+
+// push_xxx() 대신 emplace_xxx()를 권장합니다.
+// push_front() => emplace_front()
+// push_back()  => emplace_back()
+// insert()     => emplace()
 
