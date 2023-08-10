@@ -7,7 +7,20 @@ template<typename T>
 class Ptr
 {
 	T*   obj;
-	int* ref;
+	int* ref;	// 꼭 이렇게 해야 하나요 ?
+//	static int ref; // 이렇게 하면 안되나요.. 
+					// 안됩니다.
+
+					// Ptr<int> p1 = new int;
+					// Ptr<int> p2 = p1; // p1과 p2는 참조 계수 공유
+
+					// Ptr<int> p3 = new int;
+					// Ptr<int> p4 = p3; // p3와 p4가 참조 계수 공유
+					//					 // 단, 위 p1, p2 와는 다른 참조 계수
+					// 
+					// 그런데, static 변수로 하면, 모든 Ptr 객체가 공유 합니다.	
+					// 참조계수는 힙에 올릴수 밖에 없습니다.
+
 public:
 	Ptr(T* p = 0) : obj(p) 
 	{
