@@ -19,15 +19,15 @@ int main()
 
 
 	// shared_ptr vs unique_ptr 의 삭제자 변경
+	// shared_ptr : 생성자로 삭제자를 받아서, 내부적으로 관리객체에 보관했다가
+	//			    소멸자에서 사용. 저장 공간 필요!!
+	// unique_ptr : 템플릿 인자로 받아서 사용, 저장 공간 필요 없음.
+	std::shared_ptr<int>              sp((int*)malloc(sizeof(int)), 삭제자함수);
+	std::unique_ptr<int, 삭제함수객체> up((int*)malloc(sizeof(int)));
 
-	std::shared_ptr<int>        sp((int*)malloc(sizeof(int)));
-	std::unique_ptr<int, Freer> up((int*)malloc(sizeof(int)));
-
-
-
-
-
-	std::unique_ptr<int> up3(new int[10]);
+	// 배열로 할당, 아래처럼 int 대신 int[] 전달
+	std::unique_ptr<int[]> up3(new int[10]);  // C++14 부터
+	std::shared_ptr<int[]> sp3(new int[10]);  // C++17 부터
 
 
 
@@ -36,3 +36,15 @@ int main()
 
 
 }
+/*
+template<typename T, typename D> class unique_ptr
+{
+	T* ptr;
+public:
+	~unique_ptr()
+	{
+		D d; // 삭제자 객체 생성
+		d(ptr); // 삭제
+	}
+};
+*/
