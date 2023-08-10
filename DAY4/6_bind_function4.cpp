@@ -23,6 +23,9 @@ int main()
 	auto ret = std::find_if(v.begin(), v.end(), std::bind(&foo, _1, k)   );
 
 	std::cout << *ret << std::endl;
+
+	// 위처럼 조건자를 일반함수로 만들어서 std::bind() 해도 되지만..
+	// 위같은 예제는 차라리 "람다표현식"을 사용하는 것을 권장합니다.
 }
 
 
