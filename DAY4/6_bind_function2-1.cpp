@@ -21,7 +21,19 @@ int main()
         
     f = std::bind(&f3, _1, 0, 0);
     f(10); // f3( 10, 0, 0)
+    
+    
+    // 멤버 함수를 bind 할때는 객체도 같이 전달해야 합니다.
+    // => 단, static 멤버 함수는 객체 필요 없습니다.
+    Dialog dlg;
 
+    f = std::bind(&Dialog::close, &dlg, _1, 3.4);
+    f(10); // dlg.close(10, 3.4)
+
+    //--------------------
+    // 람다 표현식도 담을수 있습니다.
+    f = [](int a) { std::cout << "lambda" << std::endl; };
+    f(10);
 }
 
 
