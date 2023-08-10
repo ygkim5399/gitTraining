@@ -34,18 +34,36 @@ int main()
 
 	//------------------------
 	
-	// 반복자에 대해서
+	// 반복자에 대해서	
 	auto p = m.find("wed"); // find(키값)
 
+
+
+
 	// p를 사용해서 "wed : 수요일" 이라고 출력해보세요
+	// 1. p 는 map 의 반복자
+	// 2. 반복자는 요소를 가리키는 포인터 역활
+	// 3. map 의 요소는 pair!!
+	// 4. 따라서, p는 pair 의 포인터 처럼 사용가능
 
-
-
-
+	std::cout << p->first << " : " << p->second << std::endl;
+	std::cout << (*p).first << " : " << (*p).second << std::endl;
 
 
 	// [] 연산자
-	std::cout << m["sun"] << std::endl; 
+	// 현재 m 에는 "sun" 키값이 없습니다.
+	std::cout << m["sun"] << std::endl;	 // 1. sun 키값이 없으므로 예외 발생
+										 // 2. ("sun", "") 으로 새롭게 데이타 추가
+										// => 2번 입니다.
+
+	// 따라서, map 에 특정 키값이 있는지 조사할때는 [] 연산 사용하지 마세요
+	// find 로 찾으세요
+	auto ret = m.find("sat");
+	if (ret == m.end())
+	{
+		// "sat" 없음..
+	}
+
 }
 
 
