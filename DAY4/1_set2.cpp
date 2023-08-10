@@ -31,6 +31,7 @@ public:
 };
 */
 
+/*
 struct MyCompare
 {
 	inline bool operator()(int a, int b) const
@@ -38,11 +39,23 @@ struct MyCompare
 		return abs(a) < abs(b);
 	}
 };
+*/
+template<typename T>
+struct MyCompare
+{
+	inline bool operator()(T a, T b) const
+	{
+		return abs(a) < abs(b);
+	}
+};
+
 
 int main()
 {
 	// 핵심 1. 비교 정책의 변경
-	std::set<int, MyCompare > s;
+//	std::set<int, MyCompare > s;		  // abs(a) < abs(b)
+    std::set<int, MyCompare<int> > s;
+//	std::set<int, std::greater<int> > s;  // a > b 연산
 
 	s.insert(20);
 	s.insert(-30);
@@ -52,10 +65,13 @@ int main()
 
 	show(s);
 
+	// 2. C++ 초보자가 헷갈려 하는것 
+	// std::less<int>   : 타입 입니다. (int 같은 )
+	// std::less<int>() : 임시객체 생성 ( 즉, 타입이 아닌 객체(변수))
 
+//	std::sort(v.begin(), v.end(), std::less<int>() ); // 함수 인자 는 객체 전달
 
-	// 아래 코드를 평가해보세요
-//	auto ret1 = std::find(s.begin(), s.end(), 30);
+//	std::set<int, std::less<int>  > s2;		// 템플릿 인자는 타입을 전달
 
 
 }
