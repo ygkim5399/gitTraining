@@ -23,7 +23,6 @@ int main()
 	while (std::getline(f, s)) // 파일에서 한줄 읽기
 	{
 		++no; // line number 증가
-
 		std::istringstream iss(s);
 
 		while (iss >> word)	// 한줄(문장)을 단어로 분리
@@ -32,6 +31,19 @@ int main()
 			//			 없으면 새롭게 생성
 			index_map[word].push_back(no);
 		}
+	}
+	//--------------------------------
+	// map 의 모든 요소를 화면출력
+	// => 아래 소스에서 "auto" 부분의 타입을 알수 있어야 합니다.
+	for (const auto& e : index_map)
+	{
+		// e : pair<string, list<int>> 입니다.
+		std::cout << e.first << " : ";
+
+		for (auto n : e.second) // e.second(list) 에서 각각의 요소 꺼내기
+			std::cout << n << ", ";
+
+		std::cout << "\n";
 	}
 }
 
