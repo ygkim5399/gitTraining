@@ -6,7 +6,7 @@
 template<typename T>
 class Ptr
 {
-	T* obj;
+	T*   obj;
 	int* ref;
 public:
 	Ptr(T* p = 0) : obj(p) 
@@ -15,7 +15,22 @@ public:
 		*ref = 1;	
 	}
 
-	~Ptr() { delete obj; }
+	// 참조개수(reference counting) 기술을 사용하는
+	// 복사 생성자
+	Ptr(const Ptr& p)
+		: obj(p.obj), ref(p.ref)
+	{
+		++(*ref);
+	}
+
+	~Ptr() 
+	{ 
+		if (--(*ref) == 0)
+		{
+			delete obj; // 자원 삭제
+			delete ref; // 참조계수 관리용 변수도 삭제
+		}
+	}
 
 	T* operator->() { return obj; }
 	T& operator*() { return *obj; }
