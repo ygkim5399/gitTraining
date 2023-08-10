@@ -12,7 +12,10 @@ struct People
 
 
 	//	std::shared_ptr<People> bf; // 참조계수를 증가하는 스마트 포인터
-	People* bf;						// raw pointer, 객체를 가르켜도, 참조계수가 증가하는 것은 아님
+
+	People* bf;			// raw pointer, 객체를 가르켜도, 참조계수가 증가하는 것은 아님
+						// 하지만, 자신이 가리키던 메모리가 파괴되었는지 조사할수 없다.
+						// "dangling pointer" 의 위험이 있다							
 };
 
 int main()
@@ -23,8 +26,11 @@ int main()
 
 		sp1->bf = sp2.get();
 		sp2->bf = sp1.get();
-	}
 
+	} // 이순간 sp2 파괴
+	  // sp2가 가리키는 "lee" 객체도 파괴
+
+	// sp1->bf 는 0이 아니지만, 이미 파괴된 메모리를 가리키게 됩니다.
 	if (sp1->bf != nullptr)
 	{
 		auto name = sp1->bf->name; // !!?? 잘 생각해 보세요..
