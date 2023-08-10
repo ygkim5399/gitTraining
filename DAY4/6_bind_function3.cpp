@@ -16,7 +16,6 @@ public:
 	{
 		notif_map[key].push_back(func);
 	}
-
 	void postNotificationWithName(const std::string& key)
 	{
 		for (auto f : notif_map[key] ) // notif_map[key] 는 결국 vector
@@ -25,7 +24,6 @@ public:
 		}
 	}
 };
-
 
 void foo()      { std::cout << "foo " << std::endl; }
 void goo(int a) { std::cout << "goo "  << std::endl; }
@@ -36,8 +34,12 @@ int main()
 	NotificationCenter nc;
 
 	nc.addObserver("LOWBATTERY", &foo);
-	nc.addObserver("LOWBATTERY", &goo);
-	nc.addObserver("DISCONNECT_WIFI", &goo);
+
+	nc.addObserver("LOWBATTERY", std::bind(&goo, 1));
+
+	nc.addObserver("DISCONNECT_WIFI", std::bind(&goo, 2) );
+
+	nc.addObserver("DISCONNECT_WIFI", []() { std::cout << "lambda\n"; } );
 
 
 	// 배터리 모듈쪽에서 배터리가 부족해지면
