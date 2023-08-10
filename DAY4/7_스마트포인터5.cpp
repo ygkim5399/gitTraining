@@ -25,27 +25,17 @@ int main()
 	// => Point 객체와 "관리객체"를 따로 할당하게 됩니다.
 //	std::shared_ptr<Point> sp(new Point(1, 2));
 
+
 	// 아래처럼 사용하면 make_shared 가
 	// 1. Point 객체와 "관리객체"를 같이 (연속적으로)할당하고
 	// 2. 해당 메모리를 관리하는 shared_ptr 을 반환해 줍니다
+	// 결국 위와 동일한 의미 있데, 보다 효율적으로 메모리를 관리하게 됩니다.
 	std::shared_ptr<Point> sp = std::make_shared<Point>(1, 2);
 	
 	
-
+	// 결론, 스마트 포인터(shared_ptr) 을 사용할것 이라면 
+	std::shared_ptr<Point> sp1(new Point(1, 2)); // bad, 이렇게 하지말고
+	std::shared_ptr<Point> sp2 = std::make_shared<Point>(1, 2); // good. 이렇게 하세요
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-void foo( std::shared_ptr<int> sp, int n) {}
-
-int goo() { return 10; }
 
