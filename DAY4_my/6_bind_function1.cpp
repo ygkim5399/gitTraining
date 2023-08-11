@@ -1,0 +1,35 @@
+#ifndef DAY4
+#include <iostream>
+#include <algorithm>
+#include <functional>
+
+using namespace std::placeholders; // _1, _2, _3 ...
+
+// 4항 함수
+void foo( int a, int b, int c, int d)
+{
+    printf("%d, %d, %d, %d\n", a, b, c, d);
+}
+
+int main()
+{
+    foo(1,2,3,4);   // 4항 함수..
+	// std::bind : M항 함수의 일부 인자를 고정해서
+	//				N항 함수를 반환 (단, M>N)
+
+	// 사용법 : std::bind(M항 함수, M 개 인자)
+
+	std::bind(&foo, 3, 4, 1, 2)();	// 결국 foo(3,4,1,2) 의미
+	// <- bind 반환값이 함수->|		// 4항함수 -> 0항함수로 변경한 것
+
+	std::bind(&foo, 8, _1, 6, _2)(3, 7);
+
+	std::bind(&foo, _3, _1, 3, _2 )(9, 4, 8); // foo(8,9,3,4) 나오게 해보세요
+	//  결국 std::bind 는
+	// -> 특정인자를 "확정된 값으로 고정하거나"
+	// -> 인자의 순서를 변경한 
+	// -> 새로운 함수를 생성
+	// _1, _2, _3 : placeholder 라고 합니다.
+}
+
+#endif

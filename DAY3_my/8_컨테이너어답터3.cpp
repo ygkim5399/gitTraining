@@ -1,0 +1,30 @@
+#ifndef DAY3
+
+#include <stack>
+#include <queue> // queue, priority_queue
+#include "show.h"
+
+int main()
+{
+	// 다음중 에러를 모두 골라 보세요 *** TEST
+	// stack : LIFO (last in first out), 한쪽으로만 입출력 가능하면 됩니다.
+	// queue : FIFO (First in First out), 양쪽으로 입출력 사용
+	// -> vector 는 전방 삽입/삭제가 안됩니다.
+	std::stack<int, std::list<int>>   s1;	// ok
+	std::stack<int, std::vector<int>> s2;	// ok
+	std::stack<int, std::deque<int>>  s3;	// ok
+
+	std::queue<int, std::list<int>>   q1;	// ok
+	std::queue<int, std::vector<int>> q2;	// error
+	std::queue<int, std::deque<int>>  q3;	// ok
+
+	// 단 컴파일 하면 위 코드 자체가 에러는 아닙니다.
+	q2.push(10);	// ok, 내부적으로 vector.push_back(10) 으로 넣는다는 의미
+	q2.pop();	// error. vector.pop_front() 를 시도하는데
+				//	vetor 에는 pop_front() 가 없다
+
+}
+
+
+
+#endif

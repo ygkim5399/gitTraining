@@ -1,0 +1,27 @@
+#ifndef DAY3
+
+#include <vector>
+#include <algorithm>
+#include "show.h"
+
+using namespace std;
+
+int main() {
+	std::vector<int> v = { 1,2,3,4,5,6,7,8,9,10 };
+
+
+	// C++98 알고리즘 : 인자로 반복자만 전달 가능
+	auto ret1 = std::find(v.begin(), v.end(), 3);
+
+	// c++ 20의 새로운 알고리즘 : 반복자도 가능하고, 컨테이너도 가능
+	// std::ranges -> namespace 이름
+	auto ret2 = std::ranges::find(v.begin(), v.end(), 3);
+	auto ret3 = std::swap_ranges::find(v, 3);
+
+
+}
+
+// ranges : [first, last) 의 반복자 2개의 쌍을 "범위(ranges)" 라고 부릅니다.
+
+
+#endif 
