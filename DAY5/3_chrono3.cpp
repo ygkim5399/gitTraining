@@ -26,24 +26,24 @@ int main()
 	std::cout << us.count() << std::endl;
 	std::cout << ns.count() << std::endl;
 
+
 	// 2. 시간 객체를 생성하는 방법
 	std::chrono::seconds s1(10); // 1. 시간 타입을 직접 사용
 
+
 	auto s2 = 10s;  // C++11, "user define literal" 문법 사용
+					// seconds operator""s(10) 이라는 함수가 호출됩니다
+
+	auto m1 = 10min; // std::chrono::minutes m1(10)
 	
 
 
 
-
-
-
-	// 2. literals( h, min, s, ms, us, ns )
+	// 3. literals( h, min, s, ms, us, ns )
 	seconds sec = 1min;
 
-	sec = 1min + 3s;
-	sec += 40s;
-	std::cout << sec.count() << std::endl;
+	sec = 1min + 3s; // 63
+	sec += 40s;      // 103
+	std::cout << sec.count() << std::endl; // 103
 
-	seconds sec2 = 1min + 3s;
-	std::cout << sec2.count() << std::endl;
 }
