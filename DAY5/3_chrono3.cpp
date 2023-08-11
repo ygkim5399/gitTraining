@@ -38,7 +38,6 @@ int main()
 	
 
 
-
 	// 3. literals( h, min, s, ms, us, ns )
 	seconds sec = 1min;
 
@@ -46,4 +45,15 @@ int main()
 	sec += 40s;      // 103
 	std::cout << sec.count() << std::endl; // 103
 
+
+	// 4. 현재스레드를 잠시 재우려면 아래 처럼 합니다.
+	
+//	std::this_thread::sleep_for( 1000 ); // error. 인자로 정수가 아닌
+										// chrono 타입을 보내야 합니다.
+	std::this_thread::sleep_for(10s);
+	std::this_thread::sleep_for(10ns);
+	std::this_thread::sleep_for(10us);
+
+	// 또는 아래 처럼 해도 됩니다.
+	std::this_thread::sleep_for( std::chrono::seconds(10) );
 }
