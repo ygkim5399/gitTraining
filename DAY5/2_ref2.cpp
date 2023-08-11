@@ -1,6 +1,12 @@
 #include <iostream>
 #include <functional>
 
+// reference_wrapper 의 정확한 원리
+// 1. 결국 내부적으로 포인터를 보관하는 것
+// 2. 복사/대입 연산시 "포인터 처럼 동작"
+// 3. raw reference 로 변환 가능 
+
+
 // C++ 표준의 reference_wrapper 를 만들어 봅시다.
 template<typename T> 
 class reference_wrapper
@@ -28,7 +34,7 @@ int main()
 
 	std::cout << n1 << std::endl;
 	std::cout << n2 << std::endl;
-	std::cout << r1 << std::endl;
-	std::cout << r2 << std::endl;
+	std::cout << r1 << std::endl; 
+	std::cout << r2 << std::endl; // cout << r2.operator int&() 의 원리로 출력가능
 }
 
