@@ -25,6 +25,22 @@ int main()
 	std::shared_ptr<int>              sp((int*)malloc(sizeof(int)), 삭제자함수);
 	std::unique_ptr<int, 삭제함수객체> up((int*)malloc(sizeof(int)));
 
+
+	// 삭제자를 템플릿 인자로 받는 것이 좋다면 왜 shared_ptr 은 템플릿인자로
+	// 하지 않았나요 ?
+	// shared_ptr 은  삭제자를 변경해도 "같은 타입" - 동일컨테이너에 저장가능
+	// unique_ptr 은  삭제자를 변경하면 "다른 타입"
+
+	std::shared_ptr<int> sp1(new int, foo);
+	std::shared_ptr<int> sp2(new int, goo); // sp1, sp2 는 같은 컨테이너에저장 가능
+
+	// 참고 : unique_ptr 은 복사가 안되므로 컨테이너에 저장 안됩니다.
+	std::unique_ptr<int, DELETER1> up1(new int);
+	std::unique_ptr<int, DELETER2> up2(new int);
+
+
+
+
 	// 배열로 할당, 아래처럼 int 대신 int[] 전달
 	std::unique_ptr<int[]> up3(new int[10]);  // C++14 부터
 	std::shared_ptr<int[]> sp3(new int[10]);  // C++17 부터
@@ -47,4 +63,9 @@ public:
 		d(ptr); // 삭제
 	}
 };
+
+unique_ptr<int, Freer> up(new int);
+
+
+
 */
