@@ -30,12 +30,15 @@ int main()
 	std::cout << sec.count() << std::endl;
 
 
-
+	// days 는 C++20 부터 표준에 들어 오는데..
+	// 그 이전이라도 아래 처럼 만들면 됩니다.
 	using days = duration<int, std::ratio<60 * 60 * 24>>;
 	std::cout << (duration_cast<days>(tp.time_since_epoch())).count() << std::endl;
 
 
+
 	// 3. time_point => 칼린더 형태의 날짜로 변경하기
+	// => C++ time_point => C언어의 time_t, c_time_s() 를 사용해서 문자열로
 	time_t t = system_clock::to_time_t(tp); // 1. time_point => struct time_t
 
 	char s[32] = { 0 };
