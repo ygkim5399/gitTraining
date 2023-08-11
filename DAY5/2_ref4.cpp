@@ -6,9 +6,9 @@ void foo(int a, int& r) { r = 200; }
 
 int main()
 {
-	int n = 10;
-
 	std::function<void(int)> f;
+
+	int n = 10;
 
 	f = std::bind(&foo, _1, n); 
 
