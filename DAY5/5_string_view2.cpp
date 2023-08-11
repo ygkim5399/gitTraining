@@ -53,3 +53,7 @@ int main()
 // 권장 : 함수 인자로 읽기만하는 문자열을 받을때는
 // => const std::string&   보다
 // => std::string_view 를 권장합니다.!!!
+
+// RUST         C++
+// String   => std::string
+// &str     => std::string_view
