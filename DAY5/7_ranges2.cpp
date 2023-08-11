@@ -11,8 +11,8 @@ class take_view
 public:
 	take_view(T& r, int cnt) : range(r), count(cnt) {}
 
-	auto begin() { return r.begin(); }
-	auto end()   { return std::next(r.begin(), count); }
+	auto begin() { return range.begin(); }
+	auto end()   { return std::next(range.begin(), count); }
 };
 
 int main()
