@@ -2,6 +2,15 @@
 #include <functional>
 using namespace std::placeholders;
 
+// C++ 어떤 개념의 기본 동작이 "value 매커니즘" 인지 "reference 매커니즘"
+// 인지를 꼭 확인하세요
+// => "value 매커니즘" 에서 레퍼런스를 적용하고 싶을때 사용하는 것이 std::ref()
+
+// 스레드간의 데이타 전달 : 값 전달이 안전 합니다.
+//                        std::ref() 를 사용하면 "참조" 전달 가능.
+// //					  => 단, 파괴 되지 않는다는 보장이 있어야 합니다. 
+
+
 void foo(int a, int& r) { r = 200; }
 
 int main()
