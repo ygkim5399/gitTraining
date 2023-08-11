@@ -26,9 +26,21 @@ int main()
 	std::cout << d2.count() << std::endl; // 20
 
 	// 2. 이제 duration 을 가지고 각각의 단위를 별명으로 만들면 됩니다.
-	using Meter = std::chrono::duration<int, std::ratio<1, 1>>;
-	using CentiMeter = std::chrono::duration<int, std::ratio<?, ?>>;
-	using MilliMeter = std::chrono::duration<int, std::ratio< ? , ? >>;
-	using KiloMeter = std::chrono::duration<int, std::ratio< ? , ? >>;
+	using Meter      = std::chrono::duration<int, std::ratio<1, 1>>;
+	using CentiMeter = std::chrono::duration<int, std::ratio<1, 100>>;
+	using MilliMeter = std::chrono::duration<int, std::ratio<1 ,1000>>;
+	using KiloMeter  = std::chrono::duration<int, std::ratio<1000 ,1>>;
+
+	Meter m(3000); // 3000m
+	CentiMeter cm = m; // 300000cm
+	std::cout << cm.count() << std::endl; // 300000
+
+	// Meter => CentiMeter 변환 : 데이타 손실이 없으므로 캐스팅 필요 없음
+	// Meter => KiloMeter  변환 : 데이타 손실 가능성이 있습니다. 캐스팅 필요
+
+//	KiloMeter km = m; // error
+	KiloMeter km = std::chrono::duration_cast<KiloMeter>(m);
+
+	std::cout << km.count() << std::endl;
 
 }
