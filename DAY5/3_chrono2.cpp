@@ -17,10 +17,18 @@
 int main()
 {
 	// 1. duration 사용
+	// => 템플릿 인자의 타입이 다르면 다른 타입 이므로 아래 d1, d2는 다른 타입입니다.
+	// => 즉, 저장하는 단위가 다른 것은 다른 타입이 됩니다.
 	std::chrono::duration<int, std::ratio<1, 100>>  d1(2); // 1/100 * 2
 	std::chrono::duration<int, std::ratio<1, 1000>> d2(d1);// 20보관
 
 	std::cout << d1.count() << std::endl; // 2
 	std::cout << d2.count() << std::endl; // 20
+
+	// 2. 이제 duration 을 가지고 각각의 단위를 별명으로 만들면 됩니다.
+	using Meter = std::chrono::duration<int, std::ratio<1, 1>>;
+	using CentiMeter = std::chrono::duration<int, std::ratio<?, ?>>;
+	using MilliMeter = std::chrono::duration<int, std::ratio< ? , ? >>;
+	using KiloMeter = std::chrono::duration<int, std::ratio< ? , ? >>;
 
 }
