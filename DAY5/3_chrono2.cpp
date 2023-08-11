@@ -28,8 +28,11 @@ int main()
 	// 2. 이제 duration 을 가지고 각각의 단위를 별명으로 만들면 됩니다.
 	using Meter      = std::chrono::duration<int, std::ratio<1, 1>>;
 	using CentiMeter = std::chrono::duration<int, std::ratio<1, 100>>;
-	using MilliMeter = std::chrono::duration<int, std::ratio<1 ,1000>>;
-	using KiloMeter  = std::chrono::duration<int, std::ratio<1000 ,1>>;
+//	using MilliMeter = std::chrono::duration<int, std::ratio<1 ,1000>>;
+//	using KiloMeter  = std::chrono::duration<int, std::ratio<1000 ,1>>;
+
+	using MilliMeter = std::chrono::duration<int, std::milli>;
+	using KiloMeter = std::chrono::duration<int,  std::kilo>;
 
 	Meter m(3000); // 3000m
 	CentiMeter cm = m; // 300000cm
@@ -40,7 +43,6 @@ int main()
 
 //	KiloMeter km = m; // error
 	KiloMeter km = std::chrono::duration_cast<KiloMeter>(m);
-
 	std::cout << km.count() << std::endl;
 
 }
