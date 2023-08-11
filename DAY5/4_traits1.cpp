@@ -3,7 +3,7 @@
 
 template<typename T> void printv(const T& b)
 {
-	if ( T °¡ Æ÷ÀÎÅÍ Å¸ÀÔÀÌ¸é )
+	if ( T ê°€ í¬ì¸í„° íƒ€ì…ì´ë©´ )
 		std::cout << v << " : " << *v << std::endl;
 	else 
 		std::cout << v << std::endl;
